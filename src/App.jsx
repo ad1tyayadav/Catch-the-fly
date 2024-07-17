@@ -1,6 +1,7 @@
 import { gsap } from 'gsap';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react'
 import './App.css';
+import Social from './Social';
 
 function App() {
   const fly = useRef();
@@ -8,7 +9,7 @@ function App() {
   const [valueY, setValueY] = useState(0);
   const [animation, setAnimation] = useState(0);
 
-  const randomX = () => gsap.utils.random(-100, 300, 100);
+  const randomX = () => gsap.utils.random(-300, 300, 100);
   const randomY = () => gsap.utils.random(-300, 300, 80);
   const rotate = () => gsap.utils.random(-360, 360, 50);
 
@@ -16,10 +17,7 @@ function App() {
     setValueX(randomX());
     setValueY(randomY());
     setAnimation(rotate());
-    head.innerText = ''
   };
-
-  const head = document.getElementById("heading")
 
   useEffect(() => {
     if (valueX || valueY || animation) {
@@ -35,15 +33,17 @@ function App() {
 
   return (
     <>
-      <div>
-        <header id='heading'>
-          <h3>Hai himmat? to pakad ke dikha!</h3>
-          <p>Kripya dhyan de agar makkhi screen se bahar nikal jaye to page ko <b>Refresh</b> kar le!</p>
-        </header>
-        <main>
-          <img src='/fly.svg' onClick={handleSubmit} ref={fly} className="fly"></img>
-        </main>
-      </div>
+      <header className='hidden sm:block'>
+        <Social />
+      </header>
+      <h3 className='absolute top-4 left-8 text-l font-bold'>Catch bug! and make your app bug free!</h3>
+      <p className='absolute top-14 left-8 text-sm opacity-[.3] sm:hidden'>Refresh Page! if you can't see the bug!</p>
+      <main>
+        <img src='/fly.svg' onMouseOver={handleSubmit} onClick={handleSubmit} ref={fly} className="fly right-6 bottom-4"></img>
+      </main>
+      <footer className='absolute bottom-20 w-full right-3 flex block sm:hidden'>
+      <Social />
+      </footer>
     </>
   );
 }
