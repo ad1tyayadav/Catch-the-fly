@@ -41,7 +41,7 @@ function App() {
           <p>Kripya dhyan de agar makkhi screen se bahar nikal jaye to page ko <b>Refresh</b> kar le!</p>
         </header>
         <main>
-          <img src='public\fly.svg' onClick={handleSubmit} ref={fly} className="fly"></img>
+          <img src='/fly.svg' onClick={handleSubmit} ref={fly} className="fly"></img>
         </main>
       </div>
     </>
